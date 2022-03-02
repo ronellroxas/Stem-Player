@@ -29,9 +29,21 @@ jobs:
         
     - run: npm ci
     - run: npm run build
+      env:
+        ACCESS_KEY: ${{ACCESS_KEY}}
+        SECRET_KEY: ${{SECRET_KEY}}
+        REGION: ${{REGION}}
+        SIGN_VER: ${{SIGN_VER}}
+        
     - run: npm run export
+      env:
+        ACCESS_KEY: ${{ACCESS_KEY}}
+        SECRET_KEY: ${{SECRET_KEY}}
+        REGION: ${{REGION}}
+        SIGN_VER: ${{SIGN_VER}}
+
     - run: touch ./out/.nojekyll
-    
+
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.2.5
       with:
