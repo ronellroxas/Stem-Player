@@ -20,7 +20,7 @@ export default async function get_track(req, res) {
     }
 
     s3.getSignedUrl('getObject', params, (err, url) => {
-        if (err) res.status(400).json({ 'error': 'failed to retrieve s3 file' });
+        if (err) res.status(400).json({ err });
         else {
             res.status(200).json({ url });
         }
