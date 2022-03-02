@@ -2,7 +2,7 @@ import aws from 'aws-sdk'
 
 export default async function get_track(req, res) {
     var stem_name = req.body;
-    console.log('api called');
+
     aws.config.update({
         accessKeyId: process.env.ACCESS_KEY,
         secretAccessKey: process.env.SECRET_KEY,
