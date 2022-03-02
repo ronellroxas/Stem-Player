@@ -9,8 +9,6 @@ import {
   ModalOverlay,
   ModalContent,
   ModalBody,
-  Heading,
-  Text,
   useDisclosure
 } from '@chakra-ui/react'
 
@@ -100,7 +98,6 @@ export default function Home() {
       else {
           setTrack(track + 1);
       }
-      handleAudioPlay(track);
       
     });
 
