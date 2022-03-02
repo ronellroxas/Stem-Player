@@ -1,6 +1,11 @@
 import aws from 'aws-sdk'
 
 export default async function get_track(req, res) {
+    if (req.method === 'GET') {
+        res.status(200).json('API route for fetching audio');
+        return
+    }
+
     var stem_name = req.body;
 
     aws.config.update({
