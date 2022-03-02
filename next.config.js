@@ -1,6 +1,3 @@
-const nextConfig = {
-    basePath: '/',
-    assetPrefix: '/'
-}
+const nextConfig = {}
 
 module.exports = nextConfig
