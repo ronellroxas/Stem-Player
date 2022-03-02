@@ -25,7 +25,7 @@ function Stem({type, stem, track, load, setLoad, audioRef}) {
             body: JSON.stringify(stem_name)
         }
 
-        fetch('api/audio', fetch_params)
+        fetch('/Stem-Player/api/audio', fetch_params)
         .then(res => res.json())
         .then(url => {
             if(audioRef.current !== undefined) {
