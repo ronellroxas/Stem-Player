@@ -20,7 +20,8 @@ function Stem({type, stem, track, load, setLoad, audioRef}) {
         let fetch_params = {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Headers': 'Authorization'
             },
             body: JSON.stringify(stem_name)
         }
