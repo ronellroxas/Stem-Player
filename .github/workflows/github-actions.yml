@@ -34,10 +34,3 @@ jobs:
         SECRET_KEY: ${{secrets.SECRET_KEY}}
         REGION: ${{secrets.REGION}}
         SIGN_VER: ${{secrets.SIGN_VER}}
-    - run: touch ./out/.nojekyll
-
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4.2.5
-      with:
-        branch: gh-pages # The branch the action should deploy to.
-        folder: out # The folder the action should deploy.
