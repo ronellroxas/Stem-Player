@@ -29,6 +29,7 @@ function Stem({type, stem, track, load, setLoad, audioRef}) {
         .then(res => res.json())
         .then(url => {
             if(audioRef.current !== undefined) {
+                console.log(url.url);
                 audioRef.current.src = url.url;
                 audioRef.current.load();
             }
