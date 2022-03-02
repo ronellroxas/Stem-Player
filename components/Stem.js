@@ -2,6 +2,7 @@ import VolumeSelector from "./VolumeSelector"
 import styles from '../styles/Stem.module.css'
 import { useState, useEffect } from "react"
 import donda2 from '../public/tracklist'
+import colorlist from '../public/colors'
 
 function Stem({type, stem, track, load, setLoad, audioRef}) {
     /*
@@ -11,7 +12,7 @@ function Stem({type, stem, track, load, setLoad, audioRef}) {
     //
     const [status, setStatus] = useState(true); //not muted status
     const [volume, setVolume] = useState(1);
-
+    const [color_i, setColorI] = useState([]);
     useEffect(() => {
         console.log('Retrieving ' + type);
         let current_track = donda2[track];
@@ -38,10 +39,10 @@ function Stem({type, stem, track, load, setLoad, audioRef}) {
             console.log(err);
         });
 
+        setColorI(generateRandomColors());
     }, [track, stem, type, audioRef]);
 
     const toggleMute = () => {
-        console.log('mute');
         if (status) {
             audioRef.current.volume = 0;
         }
@@ -53,6 +54,19 @@ function Stem({type, stem, track, load, setLoad, audioRef}) {
 
     const canPlaythrough = () => {
         setLoad(true);
+    }
+
+    //colors
+    const generateRandomColors = () => {
+        var max = colorlist.length - 1;    //dont include last color which is for off
+
+        var temp = [max, max, max, max]
+        
+        for(let i = 0; i < 4; i++) {
+            temp[i] = colorlist[Math.floor(Math.random()*10%max)];
+        }
+
+        return temp;
     }
 
     return (    
@@ -67,7 +81,7 @@ function Stem({type, stem, track, load, setLoad, audioRef}) {
             {  load === false ?
                 <h2>loading</h2>
                 :
-                <VolumeSelector audioRef={audioRef} setVolume={setVolume}/>
+                <VolumeSelector colors={color_i} audioRef={audioRef} setVolume={setVolume}/>
             }
             <audio  id="audio-vocals" preload="auto" 
                     src="" ref={audioRef} 
