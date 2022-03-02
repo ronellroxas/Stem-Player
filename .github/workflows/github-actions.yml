@@ -34,14 +34,6 @@ jobs:
         SECRET_KEY: ${{secrets.SECRET_KEY}}
         REGION: ${{secrets.REGION}}
         SIGN_VER: ${{secrets.SIGN_VER}}
-
-    - run: npm run export
-      env:
-        ACCESS_KEY: ${{secrets.ACCESS_KEY}}
-        SECRET_KEY: ${{secrets.SECRET_KEY}}
-        REGION: ${{secrets.REGION}}
-        SIGN_VER: ${{secrets.SIGN_VER}}
-
     - run: touch ./out/.nojekyll
 
     - name: Deploy 🚀
