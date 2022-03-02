@@ -51,3 +51,7 @@
     height: 100vh;
     overflow-y: auto;
 }
+
+.modal h1 {
+    cursor: pointer;
+}

@@ -18,6 +18,7 @@ export default function Home() {
   const [play, setPlay] = useState(false);
   const [title, setTitle] = useState(null);
   const [duration, setDuration] = useState("00:00");
+  const [autoplay, setAutoPlay] = useState(false);
 
   //audio refs
   const stem1Ref = useRef();
@@ -38,9 +39,15 @@ export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   useEffect(() => {
-    console.log('retrieving track ' + track);
     setTitle(donda2[track]['filename']);
   }, [track]);
+
+  useEffect(() => {
+    if (stem1Load && stem2Load && stem3Load && stem4Load && autoplay) {
+      handleAudioPlay(true);
+    }
+
+  }, [stem1Load, stem2Load, stem3Load, stem4Load, autoplay]);
 
   //handles play/pause event
   const handleAudioPlay = (state) => {
@@ -80,6 +87,7 @@ export default function Home() {
     setStem2Load(false);
     setStem3Load(false);
     setStem4Load(false);
+
   }
 
   //audio duration tracking
@@ -150,7 +158,7 @@ export default function Home() {
             <h1 className={styles.h1} onClick={()=> handleAudioPlay(false)}>pause [{duration}]</h1>
         }
         <span>
-          <span className={styles.span} onClick={onOpen}>TRACKLIST</span>
+          <span className={styles.span} onClick={onOpen}>SETTINGS & TRACKLIST</span>
         </span>
         
         <Modal isCentered isOpen={isOpen} onClose={onClose}>
@@ -158,7 +166,7 @@ export default function Home() {
           <ModalContent bgColor='#FFFFFF' >
             
             <ModalBody className={styles.modal}>
-              <h1 onClick={() => {setAutoPlay(!autoplay)}}>TRACKLIST</h1>
+              <h1 onClick={() => {setAutoPlay(!autoplay)}}>SETTINGS: AUTOPLAY TRACKS [{autoplay ? "ON": "OFF"}]</h1>
               <ul className={styles.ul}>
                 {
                   Object.keys(donda2).map((key, index) => {

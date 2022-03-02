@@ -14,7 +14,6 @@ function Stem({type, stem, track, load, setLoad, audioRef}) {
     const [volume, setVolume] = useState(1);
     const [color_i, setColorI] = useState([]);
     useEffect(() => {
-        console.log('Retrieving ' + type);
         let current_track = donda2[track];
 
         let stem_name = "Donda 2_" + current_track['filename'] + "_" + stem + current_track['filetype'];
