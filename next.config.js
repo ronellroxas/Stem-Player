@@ -1,6 +1,6 @@
 const nextConfig = {
-    basePath: '/Stem-Player',
-    assetPrefix: '/Stem-Player'
+    basePath: '/',
+    assetPrefix: '/'
 }
 
 module.exports = nextConfig

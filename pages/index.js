@@ -135,7 +135,7 @@ export default function Home() {
       <Head>
         <title>STEM PLAYER</title>
         <meta name="description" content="Simulated Stem Player by Kanye West" />
-        <link rel="icon" href="/Stem-Player/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
